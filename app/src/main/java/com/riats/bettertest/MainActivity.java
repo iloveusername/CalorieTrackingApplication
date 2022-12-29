@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         TextView testText = (TextView) findViewById(R.id.testText);
         EditText editText = (EditText) findViewById(R.id.editNum);
         Button button = (Button) findViewById(R.id.button);
+        SeekBar seekBar = findViewById(R.id.seekBar);
 
         testText.setText("Testing");
 
@@ -41,11 +42,32 @@ public class MainActivity extends AppCompatActivity {
         String[] foodList = string.split(",");
         testText.setText(String.valueOf(foodList.length));
         testText.setText(foodList[0]);
+        int x = 0;
+        int y = 0;
+        String[][] foodArray = new String[Math.round(foodList.length)][8];
+        for (String food : foodList){
+            foodArray[x][y] = food;
+            x += 1;
+            if(x > 7 && y < 5){
+                x = 0;
+                y += 1;
+            }
+        }
+
+
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
+                int layer = seekBar.getProgress();
                 int userNum = Integer.parseInt(editText.getText().toString());
-                if(userNum <= foodList.length){
-                    testText.setText(foodList[userNum]);
+                if(userNum <= foodList.length/8){
+                    if(layer > 8 || layer < 0){
+                        testText.setText("Invalid Layer");
+                    }
+                    else{
+//                        testText.setText(foodList[userNum]);
+                        testText.setText(foodArray[userNum][layer]);
+                    }
+
                 }
                 else{
                     testText.setText("Invalid Selection");
@@ -53,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
         }
 
