@@ -1,12 +1,13 @@
 package com.riats.bettertest;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -19,7 +20,7 @@ public class FoodSelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_selector);
         Button goBack = findViewById(R.id.goBack);
-
+        ListView listView = findViewById(R.id.listView);
 
         String string = "Test";
         try {
@@ -58,15 +59,16 @@ public class FoodSelector extends AppCompatActivity {
             x += 1;
         }
 
+        ArrayAdapter<String> arr;
+        arr = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, foodNames);
+        listView.setAdapter(arr);
+
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switchActivity();
             }
         });
-
-
-
 
     }
     public void switchActivity(){
