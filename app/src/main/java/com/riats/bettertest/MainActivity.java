@@ -2,6 +2,7 @@ package com.riats.bettertest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
@@ -31,12 +32,9 @@ public class MainActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                switchActivity();
             }
         });
-
-
-
 
 //        TextView testText = (TextView) findViewById(R.id.testText);
 //        EditText editText = (EditText) findViewById(R.id.editText);
@@ -96,6 +94,9 @@ public class MainActivity extends AppCompatActivity {
 //
 //        }
 
-
+    }
+    public void switchActivity(){
+        Intent intent = new Intent(this, FoodSelector.class);
+        startActivity(intent);
     }
 }
