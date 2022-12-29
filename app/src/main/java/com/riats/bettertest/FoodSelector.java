@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,6 +34,8 @@ public class FoodSelector extends AppCompatActivity {
         Button goBack = findViewById(R.id.goBack);
         ListView listView = findViewById(R.id.listView);
         TextView textView = findViewById(R.id.confirmNum);
+        EditText searchBar = findViewById(R.id.searchBar);
+
         textView.setText(String.valueOf(dailyCalories));
 
         String string = "Test";
@@ -74,10 +79,26 @@ public class FoodSelector extends AppCompatActivity {
         arr = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, foodNames);
         listView.setAdapter(arr);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                textView.setText("Bruh");
+                String uh = (String) parent.getItemAtPosition(position);
+                textView.setText(uh);
+            }
+        });
+
         goBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 switchActivity();
+            }
+        });
+
+        searchBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
             }
         });
 
