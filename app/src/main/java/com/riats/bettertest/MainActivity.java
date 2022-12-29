@@ -20,14 +20,20 @@ import java.util.Arrays;
 import java.util.Hashtable;
 
 public class MainActivity extends AppCompatActivity {
-    int dailyCalories = 0;
+    int dailyCalories = 10;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null){
+            dailyCalories = extras.getInt("Daily Calories");
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button add = findViewById(R.id.addButton);
         TextView textView = findViewById(R.id.textView);
+        textView.setText(String.valueOf(dailyCalories));
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void switchActivity(){
         Intent intent = new Intent(this, FoodSelector.class);
+        intent.putExtra("Daily Calories", dailyCalories);
         startActivity(intent);
     }
 }

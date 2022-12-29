@@ -8,19 +8,30 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Hashtable;
 
 public class FoodSelector extends AppCompatActivity {
+    int dailyCalories = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Bundle extras = getIntent().getExtras();
+        if (extras != null){
+            dailyCalories = extras.getInt("Daily Calories");
+        }
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_food_selector);
         Button goBack = findViewById(R.id.goBack);
         ListView listView = findViewById(R.id.listView);
+        TextView textView = findViewById(R.id.confirmNum);
+        textView.setText(String.valueOf(dailyCalories));
 
         String string = "Test";
         try {
@@ -73,6 +84,7 @@ public class FoodSelector extends AppCompatActivity {
     }
     public void switchActivity(){
         Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("Daily Calories", dailyCalories);
         startActivity(intent);
     }
 }
