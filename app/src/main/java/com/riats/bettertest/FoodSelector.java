@@ -84,7 +84,9 @@ public class FoodSelector extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 textView.setText("Bruh");
                 String uh = (String) parent.getItemAtPosition(position);
-                textView.setText(uh);
+                int addingStuff = Integer.valueOf(calDict.get(uh).trim());
+                dailyCalories += addingStuff;
+                textView.setText(String.valueOf(dailyCalories));
             }
         });
 
