@@ -10,7 +10,7 @@
         android:id="@+id/testText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:rotationX="54"
+        android:rotationX="15"
         android:text="Yooooo Wazzgood??"
         android:textSize="32sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,24 +18,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.232" />
-
-    <EditText
-        android:id="@+id/editNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="Enter Number:"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/testText"
-        app:layout_constraintVertical_bias="0.12" />
+        app:layout_constraintVertical_bias="0.242" />
 
     <Button
         android:id="@+id/button"
@@ -44,9 +27,22 @@
         android:text="Get!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.863"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNum"
-        app:layout_constraintVertical_bias="0.295" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <EditText
+        android:id="@+id/editNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/testText"
+        app:layout_constraintVertical_bias="0.231" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

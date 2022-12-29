@@ -43,8 +43,14 @@ public class MainActivity extends AppCompatActivity {
         testText.setText(foodList[0]);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                String bruv = 
-                testText.setText();
+                int userNum = Integer.parseInt(editText.getText().toString());
+                if(userNum <= foodList.length){
+                    testText.setText(foodList[userNum]);
+                }
+                else{
+                    testText.setText("Invalid Selection");
+                }
+
             }
         });
 
