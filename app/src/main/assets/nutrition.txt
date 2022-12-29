@@ -97,7 +97,7 @@ Ham and cheese spread,245
 "TACO BELL, Taco Salad",170
 "Sauce, worcestershire",78
 "Candies, marshmallows",318
-"Hummus, home prepared",177 
+"Hummus, home prepared",177
 Horned melon (Kiwano),44
 Ice cream sundae cone,254
 "Peppers, raw, serrano",32

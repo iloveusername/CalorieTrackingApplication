@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
 
         Hashtable<String, String> calDict = new Hashtable<String, String>();
         String[] foodLines = string.split("\n");
+        String[] foodNames = new String[foodLines.length];
 
+        int x = 0;
         for (String line : foodLines){
             int index = 0;
             char check = ',';
@@ -63,9 +65,10 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(bruh);
             String[] sep = line.split("]");
             calDict.put(sep[0],sep[1]);
-
+            foodNames[x] = sep[0];
+            x += 1;
         }
-        testText.setText(calDict.get("Cornstarch"));
+        testText.setText(String.valueOf(foodNames.length));
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
@@ -74,38 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 testText.setText(calDict.get(userText));
             }
         });
-
-
-//        String string = "";
-//        try {
-////            InputStream inputStream = getAssets().open("food.txt");
-//            InputStream inputStream = getAssets().open("nutrition.txt");
-//            int size = inputStream.available();
-//            byte[] buffer = new byte[size];
-//            inputStream.read(buffer);
-//            string = new String(buffer);
-//            string = string.replace("\n",",");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        String[] foodList = string.split(",");
-//        testText.setText(String.valueOf(foodList.length));
-//        testText.setText(foodList[0]);
-//        int x = 0;
-//        int y = 0;
-//        String[][] foodArray = new String[foodList.length][foodList.length];
-//        for (String food : foodList){
-//            foodArray[x][y] = food;
-//            x += 1;
-//            if (x > 5){
-//                x = 0;
-//                y += 1;
-//            }
-//        }
-//
-//
-
-
 
         }
 
