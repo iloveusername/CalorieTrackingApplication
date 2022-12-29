@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TextView testText = (TextView) findViewById(R.id.testText);
-        EditText editText = (EditText) findViewById(R.id.editNum);
+        EditText editText = (EditText) findViewById(R.id.editText);
         Button button = (Button) findViewById(R.id.button);
         SeekBar seekBar = findViewById(R.id.seekBar);
 
@@ -36,16 +36,44 @@ public class MainActivity extends AppCompatActivity {
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             string = new String(buffer);
-            string = string.replace("\",","'");
+            //string = string.replace("\",","]");
             string = string.replace("\"", "");
         }
         catch (IOException e) {
             e.printStackTrace();
         }
+
         testText.setText(string);
 
         Hashtable<String, String> calDict = new Hashtable<String, String>();
-        
+        String[] foodLines = string.split("\n");
+
+        for (String line : foodLines){
+            int index = 0;
+            char check = ',';
+            char replace = ']';
+            for (int i = 0; i < line.length(); i++){
+                if(line.charAt(i) == check) {
+                    index = Math.max(index, i);
+                }
+            }
+            StringBuilder bruh = new StringBuilder(line);
+            bruh.setCharAt(index, replace);
+            line = bruh.toString();
+            System.out.println(bruh);
+            String[] sep = line.split("]");
+            calDict.put(sep[0],sep[1]);
+
+        }
+        testText.setText(calDict.get("Cornstarch"));
+
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                int layer = seekBar.getProgress();
+                String userText = editText.getText().toString();
+                testText.setText(calDict.get(userText));
+            }
+        });
 
 
 //        String string = "";
@@ -76,26 +104,7 @@ public class MainActivity extends AppCompatActivity {
 //        }
 //
 //
-//        button.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v){
-//                int layer = seekBar.getProgress();
-//                int userNum = Integer.parseInt(editText.getText().toString());
-//                if(userNum <= foodList.length){
-//                    if(layer > 76 || layer < 0){
-//                        testText.setText("Invalid Layer");
-//                    }
-//                    else{
-////                        testText.setText(foodList[userNum]);
-//                        testText.setText(foodArray[layer][userNum]);
-//                    }
-//
-//                }
-//                else{
-//                    testText.setText("Invalid Selection");
-//                }
-//
-//            }
-//        });
+
 
 
         }

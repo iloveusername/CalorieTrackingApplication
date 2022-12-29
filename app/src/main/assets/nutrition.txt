@@ -82,11 +82,8 @@
 "Gravy, canned, au jus",16
 "McDONALD'S, Hamburger",264
 "Cheese, port de salut",352
-SILK Original Creamer,100
-SILK Hazelnut Creamer,133
 "Soup, mix, dry, onion",293
 "Mushrooms, raw, enoki",37
-Bacon and beef sticks,517
 "Salami, pork, Italian",425
 "Crackers, whole-wheat",427
 "Peanuts, raw, spanish",570
@@ -100,7 +97,7 @@ Ham and cheese spread,245
 "TACO BELL, Taco Salad",170
 "Sauce, worcestershire",78
 "Candies, marshmallows",318
-"Hummus, home prepared",177
+"Hummus, home prepared",177 
 Horned melon (Kiwano),44
 Ice cream sundae cone,254
 "Peppers, raw, serrano",32
