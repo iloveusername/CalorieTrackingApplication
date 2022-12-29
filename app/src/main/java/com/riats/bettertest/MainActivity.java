@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         for (String food : foodList){
             foodArray[x][y] = food;
             x += 1;
-            if (x > 76){
+            if (x > 5){
                 x = 0;
                 y += 1;
             }
