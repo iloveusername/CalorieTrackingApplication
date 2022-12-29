@@ -14,6 +14,7 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Hashtable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,54 +29,73 @@ public class MainActivity extends AppCompatActivity {
 
         testText.setText("Testing");
 
-        String string = "";
+        String string = "Test";
         try {
-//            InputStream inputStream = getAssets().open("food.txt");
             InputStream inputStream = getAssets().open("nutrition.txt");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
             string = new String(buffer);
-            string = string.replace("\n",",");
-        } catch (IOException e) {
+            string = string.replace("\",","'");
+            string = string.replace("\"", "");
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
-        String[] foodList = string.split(",");
-        testText.setText(String.valueOf(foodList.length));
-        testText.setText(foodList[0]);
-        int x = 0;
-        int y = 0;
-        String[][] foodArray = new String[foodList.length][foodList.length];
-        for (String food : foodList){
-            foodArray[x][y] = food;
-            x += 1;
-            if (x > 5){
-                x = 0;
-                y += 1;
-            }
-        }
+        testText.setText(string);
+
+        Hashtable<String, String> calDict = new Hashtable<String, String>();
+        
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                int layer = seekBar.getProgress();
-                int userNum = Integer.parseInt(editText.getText().toString());
-                if(userNum <= foodList.length){
-                    if(layer > 76 || layer < 0){
-                        testText.setText("Invalid Layer");
-                    }
-                    else{
-//                        testText.setText(foodList[userNum]);
-                        testText.setText(foodArray[layer][userNum]);
-                    }
-
-                }
-                else{
-                    testText.setText("Invalid Selection");
-                }
-
-            }
-        });
+//        String string = "";
+//        try {
+////            InputStream inputStream = getAssets().open("food.txt");
+//            InputStream inputStream = getAssets().open("nutrition.txt");
+//            int size = inputStream.available();
+//            byte[] buffer = new byte[size];
+//            inputStream.read(buffer);
+//            string = new String(buffer);
+//            string = string.replace("\n",",");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        String[] foodList = string.split(",");
+//        testText.setText(String.valueOf(foodList.length));
+//        testText.setText(foodList[0]);
+//        int x = 0;
+//        int y = 0;
+//        String[][] foodArray = new String[foodList.length][foodList.length];
+//        for (String food : foodList){
+//            foodArray[x][y] = food;
+//            x += 1;
+//            if (x > 5){
+//                x = 0;
+//                y += 1;
+//            }
+//        }
+//
+//
+//        button.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v){
+//                int layer = seekBar.getProgress();
+//                int userNum = Integer.parseInt(editText.getText().toString());
+//                if(userNum <= foodList.length){
+//                    if(layer > 76 || layer < 0){
+//                        testText.setText("Invalid Layer");
+//                    }
+//                    else{
+////                        testText.setText(foodList[userNum]);
+//                        testText.setText(foodArray[layer][userNum]);
+//                    }
+//
+//                }
+//                else{
+//                    testText.setText("Invalid Selection");
+//                }
+//
+//            }
+//        });
 
 
         }
