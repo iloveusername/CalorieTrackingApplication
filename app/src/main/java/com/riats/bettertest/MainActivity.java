@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
 
         String string = "";
         try {
-            InputStream inputStream = getAssets().open("food.txt");
+//            InputStream inputStream = getAssets().open("food.txt");
+            InputStream inputStream = getAssets().open("nutrition.txt");
             int size = inputStream.available();
             byte[] buffer = new byte[size];
             inputStream.read(buffer);
@@ -44,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
         testText.setText(foodList[0]);
         int x = 0;
         int y = 0;
-        String[][] foodArray = new String[Math.round(foodList.length)][8];
+        String[][] foodArray = new String[foodList.length][foodList.length];
         for (String food : foodList){
             foodArray[x][y] = food;
             x += 1;
-            if(x > 7 && y < 5){
+            if (x > 76){
                 x = 0;
                 y += 1;
             }
@@ -59,13 +60,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 int layer = seekBar.getProgress();
                 int userNum = Integer.parseInt(editText.getText().toString());
-                if(userNum <= foodList.length/8){
-                    if(layer > 8 || layer < 0){
+                if(userNum <= foodList.length){
+                    if(layer > 76 || layer < 0){
                         testText.setText("Invalid Layer");
                     }
                     else{
 //                        testText.setText(foodList[userNum]);
-                        testText.setText(foodArray[userNum][layer]);
+                        testText.setText(foodArray[layer][userNum]);
                     }
 
                 }
